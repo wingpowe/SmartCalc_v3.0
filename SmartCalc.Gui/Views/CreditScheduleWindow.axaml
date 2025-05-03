@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="CalculatorApp.CreditScheduleWindow"
+        Title="График платежей"
+        Width="800" Height="600">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Text="Переплата по кредиту:" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+		<TextBlock x:Name="OverpaymentTextBlock" Margin="10,0,10,0" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+
+		<TextBlock Text="Общая выплата:" Margin="10,40,10,0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+		<TextBlock x:Name="TotalPaymentTextBlock" Margin="10,40,10,0" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+
+		<DataGrid x:Name="PaymentScheduleDataGrid" Margin="20,80,0,0"
+                  AutoGenerateColumns="True" IsReadOnly="True"
+                  GridLinesVisibility="All"
+                  BorderThickness="1" BorderBrush="Gray"
+                  Grid.Row="2" Grid.ColumnSpan="2">
+		</DataGrid>
+	</Grid>
+</Window>

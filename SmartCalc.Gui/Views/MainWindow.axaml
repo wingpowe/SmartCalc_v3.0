@@ -1,0 +1,107 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:SmartCalc.Gui.ViewModels"
+        xmlns:conv="clr-namespace:SmartCalc.Gui.Converters"
+		xmlns:ScottPlot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
+		x:Class="CalculatorApp.MainWindow"
+        Title="SmartCalcV3.0" 
+        MinWidth="650" MaxWidth="650"
+        MinHeight="350" MaxHeight="350"
+        x:DataType="vm:MainWindowViewModel"
+        x:CompileBindings="True"
+
+        >
+	<Window.Resources>
+		<conv:StringToDoubleConverter x:Key="StringToDoubleConverter"/>
+	</Window.Resources>
+	
+    <Grid>
+		<Button Content="?" Click="HelpButton_Click" Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0" Background="Yellow" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+		<TextBox x:Name="InputTextBox" Text="{Binding Expression}" Margin="0,30,0,15" FontSize="30" />
+        <TabControl Margin="0,80,0,0">
+            <TabItem Header="Simple">
+                <Grid>
+					<Button x:Name="pushButton_rez" Content="=" Click="CalculateButton_Click" Width="201" Height="31" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="279,10,0,0"/>
+                    <TextBox x:Name="doubleSpinBox_2" Text="{Binding X}" Width="221" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,10,0,0" FontSize="14"/>
+                    <TextBlock x:Name="label" Text="X" Width="14" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontSize="16"/>
+                </Grid>
+            </TabItem>
+
+			<TabItem Header="Plot">
+                <Grid>
+					<Button x:Name="buildGraphButton" Content="Build Graph" Click="BuildGraphButton_Click" Width="91" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="370,10,0,0"/>
+					<TextBlock x:Name="label_2" Text="start" Width="41" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,90,0,0" FontSize="14"/>
+					<TextBox x:Name="lineEdit_start_x" Text="{Binding StartX, Converter={StaticResource StringToDoubleConverter}}" Width="113" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,90,0,0" FontSize="16"/>
+					<TextBlock x:Name="label_3" Text="end" Width="41" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,120,0,0" FontSize="14"/>
+                    <TextBox x:Name="lineEdit_end_x" Text="{Binding EndX, Converter={StaticResource StringToDoubleConverter}}" Width="113" Height="22" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,120,0,0" FontSize="16"/>
+                </Grid>
+            </TabItem>
+			<TabItem Header="Keyboard">
+                <Grid>
+                    <Button x:Name="pushButton_brac_o" Content="(" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="410,10,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_2" Content="2" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,110,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_7" Content="7" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,10,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_tchk" Content="." Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,160,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_x" Content="x" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,160,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_8" Content="8" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,10,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_add" Content="+" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,110,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_pow" Content="^" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,160,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_9" Content="9" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,10,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_ln" Content="ln" Click="NumberButton_Click" Width="61" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,160,0,0" Background="#D2691E" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_cos" Content="cos" Click="NumberButton_Click" Width="61" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Background="#D2691E" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_acos" Content="acos" Click="NumberButton_Click" Width="61" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,10,0,0" Background="#D2691E" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_atan" Content="atan" Click="NumberButton_Click" Width="61" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,110,0,0" Background="#D2691E" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_4" Content="4" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,60,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_sub" Content="-" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,10,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_5" Content="5" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,60,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_tan" Content="tan" Click="NumberButton_Click" Width="61" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,110,0,0" Background="#D2691E" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_log" Content="log" Click="NumberButton_Click" Width="61" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,160,0,0" Background="#D2691E" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_6" Content="6" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,60,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_div" Content="/" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,10,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_mul" Content="*" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,60,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_brac_c" Content=")" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="410,60,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_sqrt" Content="sqrt" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,60,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_mod" Content="mod" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,110,0,0" Background="#FF4500" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_c" Content="C" Click="ClearButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="410,110,0,0" Background="#663399" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_sin" Content="sin" Click="NumberButton_Click" Width="61" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,60,0,0" Background="#D2691E" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_asin" Content="asin" Click="NumberButton_Click" Width="61" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,60,0,0" Background="#D2691E" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_3" Content="3" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,110,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_1" Content="1" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,110,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_0" Content="0" Click="NumberButton_Click" Width="41" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,160,0,0" Background="#C0C0C0" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                    <Button x:Name="pushButton_rezu" Content="=" Click="CalculateButton_Click" Width="91" Height="41" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,160,0,0" Background="#663399" BorderBrush="Gray" BorderThickness="1" CornerRadius="20"/>
+                </Grid>
+            </TabItem>
+			<TabItem Header="History">
+				<Grid>
+					<ListBox x:Name="HistoryListBox" Margin="10" />
+					<Button Content="Load" Click="LoadFromHistoryButton_Click" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10"/>
+					<Button Content="Clear" Click="ClearHistoryButton_Click" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10"/>
+				</Grid>
+			</TabItem>
+			<TabItem Header="Credit Calculator">
+				<Grid>
+					<StackPanel Margin="10">
+						<TextBox x:Name="CreditAmountTextBox" Watermark="Сумма кредита" Margin="0,0,0,10" />
+						<TextBox x:Name="CreditTermTextBox" Watermark="Срок (в месяцах)" Margin="0,0,0,10" />
+						<TextBox x:Name="CreditRateTextBox" Watermark="Процентная ставка" Margin="0,0,0,10" />
+						<StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+							<TextBlock Text="Дата начала кредита:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+							<DatePicker x:Name="CreditStartDatePicker" />
+						</StackPanel>						<Grid Margin="0,0,0,10">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							<ComboBox x:Name="CreditTypeComboBox" Grid.Column="0" Margin="0,0,10,0">
+								<ComboBoxItem Content="Дифференцированный" />
+								<ComboBoxItem Content="Аннуитетный" />
+								
+							</ComboBox>
+							<Button Content="Рассчитать" Click="CalculateCreditButton_Click" Grid.Column="1" />
+						</Grid>
+					</StackPanel>
+				</Grid>
+			</TabItem>
+        </TabControl>
+    </Grid>
+</Window>

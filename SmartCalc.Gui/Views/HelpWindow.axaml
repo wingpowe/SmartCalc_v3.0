@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="CalculatorApp.HelpWindow"
+        Title="Справка"
+        Width="400" Height="300">
+	<Grid>
+		<TextBlock TextWrapping="Wrap" Margin="10" FontFamily="Segoe UI">
+			<Run Text="Описание интерфейса программы:"/>
+			<LineBreak/>
+			<Run Text="1. Поле ввода: используется для ввода математических выражений."/>
+			<LineBreak/>
+			<Run Text="2. Кнопка '=': выполняет вычисление введенного выражения."/>
+			<LineBreak/>
+			<Run Text="3. Поле 'X': используется для ввода значения переменной X."/>
+			<LineBreak/>
+			<Run Text="4. Кнопки с цифрами и операторами: используются для ввода соответствующих символов в поле ввода."/>
+			<LineBreak/>
+			<Run Text="5. Кнопка 'C': очищает поле ввода."/>
+			<LineBreak/>
+			<Run Text="6. Вкладка 'Plot': позволяет построить график функции."/>
+			<LineBreak/>
+			<Run Text="7. Вкладка 'Keyboard': содержит кнопки для ввода математических функций и операторов."/>
+			<LineBreak/>
+			<Run Text="8. Настройки:"/>
+			<LineBreak/>
+			<Run Text="   - Цвет заднего фона: можно изменить в файле конфигурации."/>
+			<LineBreak/>
+			<Run Text="   - Размер шрифта: можно изменить в файле конфигурации."/>
+			<LineBreak/>
+			<Run Text="   - Период ротации логов: можно изменить в файле конфигурации (час/день/месяц)."/>
+		</TextBlock>
+	</Grid>
+</Window>
